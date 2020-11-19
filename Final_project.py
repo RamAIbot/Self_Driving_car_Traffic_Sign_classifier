@@ -248,7 +248,9 @@ ax.set_xlabel('Predicated Label')
 
 plt.savefig('confusion_matrix.png')
 
-inp = 5
+print(X_test[inp].shape)
+
+inp = 1224
 print(y_test[inp])
 
 im = X_test[inp]
@@ -354,16 +356,42 @@ plot_weights(net,0,False,False)
 
 plot_weights(net,3,True,False)
 
-inp = 5
-print(y_test[inp])
+path_img = ['./download.png','./download1.png','./download2.png','./download3.png','./download4.png','./download5.png']
 
-im = X_test[inp]
-im = np.expand_dims(im,axis=0)
-im = np.transpose(im,(0,3,1,2))
-im = torch.Tensor(im)
-im = im.to(device)
-out = net(im)
-_,pred = torch.max(out.data,1)
-print(pred)
-plt.imshow(X_test[inp])
-plt.show()
+import cv2
+import pandas as pd
+def Image_predict(img_name):
+  net.eval()
+  out_data = pd.read_csv('/content/signnames.csv')
+
+  final = out_data['SignName']
+  im = cv2.imread(img_name)
+  im = cv2.cvtColor(im,cv2.COLOR_BGR2RGB)
+  plt.imshow(im)
+  plt.show()
+
+  im = cv2.resize(im,(32,32),interpolation = cv2.INTER_NEAREST)
+
+
+  im = np.expand_dims(im,axis=0)
+  im = np.transpose(im,(0,3,1,2))
+  im = torch.Tensor(im)
+  im = im.to(device)
+  out = net(im)
+  prob=out.sort(axis=1,descending=True)
+  #print(out)
+  #print(prob)
+  _,pred = torch.max(out.data,1)
+  print(pred)
+  print(final[pred.item()])
+  print('First 5 probabilities:')
+  print(prob.values[0][0:5])
+  print(prob.indices[0][0:5])
+
+#Image_predict(path_img[0])
+count=0
+for img_p in path_img:
+  count+=1
+  print('Image %d'%count)
+  Image_predict(img_p)
+  print('=================================================================')
