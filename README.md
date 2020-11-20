@@ -18,7 +18,7 @@ histogram of the dataset is shown below </p>
 
 <h2> Model Architecture </h2>
 
-<img src="" alt="model"/>
+<img src="./lenet.png" alt="model"/>
 
 <p> The Lenet model first takes the Nx32x32x3 images where N is the bacth size, passes it to the convolution layer of output channels being 6 and of kernel size 5x5.
 This reduces the image dimension to Nx28x28x6. Now we pass the output of convolution layer to a tanh activation function. The image dimension is further reduced by average 
@@ -55,7 +55,7 @@ LeNet(
 <p> The model is being trained for 15 epochs with a batch size of 64. The loss function being used in cross entropy loss function. The optimizer is Adam optimizer.
 The loss curve is shown below and it reaches nearer to zero at the end of 15 epochs. The final model's weights are being saved in model.pth file for running in test set </p>
 
-<img src="" alt="losscurve"/>
+<img src="./losscurve.JPG" alt="losscurve"/>
 
 <h2> Testing </h2>
 
@@ -77,11 +77,30 @@ The test set accuracy is of 92.20%. Few Images of test set and prediction are sh
 <p> The model misses slightly and predicts as class number 3 which is Speed limit (60km/h) but original value is Speed limit (80km/h) class 5. The other test results are names
 as test4 and test5 images.</p>
 
+<h2> Prediction on Random Traffic sign Web Images </h2>
 
+<p> The model is further tested to predict on random images from web and the correspoding prediction and first five higer properties are shown below. </p>
 
+<h2> Confusion matrix </h2> 
 
-.
+<p> The confusion matrix is plotted for the test dataset. The matrix is plotted with X axis being Predicted label and Y axis being True Label. The confusion matrix shows that 
+ majority of prediction is in the diagonal which is good for our model as the model predicts most of the signs correctly. There are also some off diagonal numbers which indicate 
+ wrong prediction but the diagonal numbers leads. </p>
+ 
+ <img src="confusion_matrix.png" alt="cm"/>
+ 
+ 
+<h2> Filters Visualization </h2> 
+<p> The weights in each of the filter after training are visualized. The function 'plot_filters_single_channel_big' takes in a weight tensor from the convoution layer and displays the complete collated images. It takes torch.Size([6, 3, 5, 5]) convolution layer and produces a visualization of dimension (15, 30). The image shows the filters which have high and low values. The filter with high values take the feature in the corresponding location in the image. The filters which has values of 0(black pixel in the image) 
+are used to remove certain parts of the image which are not being used to prediction.</p>
 
+<img src="" alt="filcoll"/>
 
+The function 'plot_filters_single_channel' also takes the weight tensor and displays each of the filter data. It dislays each channel of the filter separately. For 3 channels(RGB) it displays each one separately.
 
+<img src="conv0bin.JPG" alt="bw"/>
+
+The function 'plot_filters_multi_channel' also takes the weight tensor and displays the filter data. It can only display when the number of channels are 3. It displays them in colored image.
+
+<img src="conv0colored.JPG" alt="colorimg"/>
 
