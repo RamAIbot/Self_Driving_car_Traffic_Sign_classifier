@@ -1,7 +1,7 @@
 ## Traffic Sign Recognition Program
 [![Udacity - Self-Driving Car NanoDegree](https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg)](http://www.udacity.com/drive)
 
-<img src="" alt="titleimg"/>
+<img src="Capture1test.JPG" alt="titleimg"/>
 
 <p> The project focuses on developing a classfier to classify the traffic sign boards. We use the dataset from German traffic signs to train the classifier. The classifier uses the
 Lenet Architecuture to perform the classification task. The accuracy of the train set is 99.93%, for evaluation set it is 93.33%. The model has an accuracy of 92.20% for the images 
@@ -81,6 +81,44 @@ as test4 and test5 images.</p>
 
 <p> The model is further tested to predict on random images from web and the correspoding prediction and first five higer properties are shown below. </p>
 
+<img src="Capture1test.JPG" alt="titleimg1"/>
+
+```
+First 5 probabilities:
+tensor([9.2228, 9.0856, 8.2722, 7.3644, 6.1133], grad_fn=<SliceBackward>)
+tensor([36, 32, 18, 12,  8])
+
+```
+
+<img src="Capture2test6.JPG" alt="titleimg2"/>
+
+```
+First 5 probabilities:
+tensor([15.7573,  8.9293,  5.9251,  5.7350,  5.6857], grad_fn=<SliceBackward>)
+tensor([26, 18, 12, 11, 37])
+
+```
+
+<img src="Capture3test.JPG" alt="titleimg3"/>
+
+```
+First 5 probabilities:
+tensor([14.9549,  8.9363,  6.3633,  5.1891,  4.1887], grad_fn=<SliceBackward>)
+tensor([11, 27, 26, 30, 28])
+
+```
+
+<img src="Capture4test.JPG" alt="titleimg4"/>
+
+```
+First 5 probabilities:
+tensor([9.4062, 9.3045, 9.1612, 7.8754, 5.6117], grad_fn=<SliceBackward>)
+tensor([29, 28, 30, 23, 34])
+
+```
+
+<p> The images from the web which are of higher dimensions are resize to 32x32 and then fed to the model. The model predicts properly for images 1 and 2. For 3 it misses priority road for intersection sign. For image four it misses the first higher probability. But for 3 best probability it chooses Beware of ice/snow. The other images and probabilities are in the notebook.</p>
+
 <h2> Confusion matrix </h2> 
 
 <p> The confusion matrix is plotted for the test dataset. The matrix is plotted with X axis being Predicted label and Y axis being True Label. The confusion matrix shows that 
@@ -94,7 +132,7 @@ as test4 and test5 images.</p>
 <p> The weights in each of the filter after training are visualized. The function 'plot_filters_single_channel_big' takes in a weight tensor from the convoution layer and displays the complete collated images. It takes torch.Size([6, 3, 5, 5]) convolution layer and produces a visualization of dimension (15, 30). The image shows the filters which have high and low values. The filter with high values take the feature in the corresponding location in the image. The filters which has values of 0(black pixel in the image) 
 are used to remove certain parts of the image which are not being used to prediction.</p>
 
-<img src="" alt="filcoll"/>
+<img src="filtercollated.JPG" alt="filcoll"/>
 
 The function 'plot_filters_single_channel' also takes the weight tensor and displays each of the filter data. It dislays each channel of the filter separately. For 3 channels(RGB) it displays each one separately.
 
