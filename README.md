@@ -84,7 +84,7 @@ as test4 and test5 images.</p>
 <img src="Capture1test.JPG" alt="titleimg1"/>
 
 ```
-First 5 probabilities:
+First 5 max values:
 tensor([9.2228, 9.0856, 8.2722, 7.3644, 6.1133], grad_fn=<SliceBackward>)
 tensor([36, 32, 18, 12,  8])
 
@@ -93,7 +93,7 @@ tensor([36, 32, 18, 12,  8])
 <img src="Capture2test6.JPG" alt="titleimg2"/>
 
 ```
-First 5 probabilities:
+First 5 max values:
 tensor([15.7573,  8.9293,  5.9251,  5.7350,  5.6857], grad_fn=<SliceBackward>)
 tensor([26, 18, 12, 11, 37])
 
@@ -102,7 +102,7 @@ tensor([26, 18, 12, 11, 37])
 <img src="Capture3test.JPG" alt="titleimg3"/>
 
 ```
-First 5 probabilities:
+First 5 max values:
 tensor([14.9549,  8.9363,  6.3633,  5.1891,  4.1887], grad_fn=<SliceBackward>)
 tensor([11, 27, 26, 30, 28])
 
@@ -111,13 +111,13 @@ tensor([11, 27, 26, 30, 28])
 <img src="Capture4test.JPG" alt="titleimg4"/>
 
 ```
-First 5 probabilities:
+First 5 max values:
 tensor([9.4062, 9.3045, 9.1612, 7.8754, 5.6117], grad_fn=<SliceBackward>)
 tensor([29, 28, 30, 23, 34])
 
 ```
 
-<p> The images from the web which are of higher dimensions are resize to 32x32 and then fed to the model. The model predicts properly for images 1 and 2. For 3 it misses priority road for intersection sign. For image four it misses the first higher probability. But for 3 best probability it chooses Beware of ice/snow. The other images and probabilities are in the notebook.</p>
+<p> The images from the web which are of higher dimensions are resize to 32x32 and then fed to the model. The images are chosen with minimal background so as to ensure better prediction. Practically the object detector involved in detecting the sign boards crops all the background and gives us the image. The model predicts properly for images 1 and 2. For 3 it misses priority road for intersection sign. For image four it misses the first higher probability. But for 3 best probability it chooses Beware of ice/snow. The other images and probabilities are in the notebook. The first five max values (not softmax output) of the classes are shown.</p>
 
 <h2> Confusion matrix </h2> 
 
