@@ -5,7 +5,7 @@
 
 <p> The project focuses on developing a classfier to classify the traffic sign boards. We use the dataset from German traffic signs to train the classifier. The classifier uses the
 Lenet Architecuture to perform the classification task. The accuracy of the train set is 99.93%, for evaluation set it is 93.33%. The model has an accuracy of 92.20% for the images 
-in the test which was not known to the model while training. </p>
+in the test which was not known to the model while training. For web based random images the accuracy 66.66%  </p>
 
 <h2> Dataset </h2>
 
@@ -14,7 +14,13 @@ into train,test and eval sets. The train set contains 34799 images, eval contain
 which are colored images. The dataset has 43 classes signifying each sign in the German signs. The dataset has high volumes of major signs and rare sign are of lesser in volume. The 
 histogram of the dataset is shown below </p>
 
+<h3> Train Set Distribution </h3>
+
 <img src="./datachart.JPG" alt="hist"/>
+
+<h3> Eval Set Distribution </h3>
+
+<img src="./evaldist.JPG" alt="hist"/>
 
 <h2> Model Architecture </h2>
 
@@ -87,6 +93,8 @@ as test4 and test5 images.</p>
 First 5 max values:
 tensor([9.2228, 9.0856, 8.2722, 7.3644, 6.1133], grad_fn=<SliceBackward>)
 tensor([36, 32, 18, 12,  8])
+First 5 Probabilities:
+tensor([0.3894, 0.3395, 0.1505, 0.0607, 0.0174], grad_fn=<SliceBackward>)
 
 ```
 
@@ -96,6 +104,9 @@ tensor([36, 32, 18, 12,  8])
 First 5 max values:
 tensor([15.7573,  8.9293,  5.9251,  5.7350,  5.6857], grad_fn=<SliceBackward>)
 tensor([26, 18, 12, 11, 37])
+First 5 Probabilities:
+tensor([9.9872e-01, 1.0816e-03, 5.3624e-05, 4.4342e-05, 4.2207e-05],
+       grad_fn=<SliceBackward>)
 
 ```
 
@@ -105,6 +116,9 @@ tensor([26, 18, 12, 11, 37])
 First 5 max values:
 tensor([14.9549,  8.9363,  6.3633,  5.1891,  4.1887], grad_fn=<SliceBackward>)
 tensor([11, 27, 26, 30, 28])
+First 5 Probabilities:
+tensor([9.9724e-01, 2.4264e-03, 1.8516e-04, 5.7224e-05, 2.1043e-05],
+       grad_fn=<SliceBackward>)
 
 ```
 
@@ -114,6 +128,8 @@ tensor([11, 27, 26, 30, 28])
 First 5 max values:
 tensor([9.4062, 9.3045, 9.1612, 7.8754, 5.6117], grad_fn=<SliceBackward>)
 tensor([29, 28, 30, 23, 34])
+First 5 Probabilities:
+tensor([0.3365, 0.3040, 0.2634, 0.0728, 0.0076], grad_fn=<SliceBackward>)
 
 ```
 
